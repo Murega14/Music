@@ -17,7 +17,7 @@ public class SplashActivity extends  androidx.appcompat.app.AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spash);
+        setContentView(R.layout.activity_splash);
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         new Handler().postDelayed(new Runnable() {

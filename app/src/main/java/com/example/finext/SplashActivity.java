@@ -25,14 +25,14 @@ public class SplashActivity extends  androidx.appcompat.app.AppCompatActivity{
             public void run() {
                 FirebaseUser user = mAuth.getCurrentUser();
                 if (user == null) {
-                    Intent intent = new Intent(SpashActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    Intent mainIntent = new Intent(SpashActivity.this, MainActivity.class);
+                    Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
                     mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(mainIntent);
-                    finish;
+                    finish();
                 }
             }
         }, 5000);

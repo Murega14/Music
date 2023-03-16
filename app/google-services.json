@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "468205959964",
+    "project_id": "finext-9a646",
+    "storage_bucket": "finext-9a646.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468205959964:android:9c4abd0bda5fc0ee4218d9",
+        "android_client_info": {
+          "package_name": "com.example.finext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468205959964-dobupqivg2t61tbfuppd0j1q8t5o669s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk1Ji2schfYGRxC7Vi5Hjqu37etA8wYTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468205959964-dobupqivg2t61tbfuppd0j1q8t5o669s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SpashActivity extends  androidx.appcompat.app.AppCompatActivity{
+public class SplashActivity extends  androidx.appcompat.app.AppCompatActivity{
 
     FirebaseUser currentUser;
     private FirebaseAuth mAuth;

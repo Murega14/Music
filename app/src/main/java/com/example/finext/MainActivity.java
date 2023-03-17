@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         //onclick listener
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageButton btn = findViewById(R.id.accButton);
         btn.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, LogoutActivity.class);
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
             startActivity(intent);
         });
 

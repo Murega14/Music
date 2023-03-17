@@ -35,6 +35,6 @@ public class SplashActivity extends  androidx.appcompat.app.AppCompatActivity{
                     finish();
                 }
             }
-        }, 5000);
+        }, 3000);
     }
 }

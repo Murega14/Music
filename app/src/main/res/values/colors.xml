@@ -15,4 +15,5 @@
     <color name="edit_text_background">#f2f2f2</color>
     <color name="button_background">#6200ee</color>
     <color name="button_text">#2196F3</color>
+    <color name="toolbar">#E1F60C</color>
 </resources>

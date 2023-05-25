@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="accButton" type="id" />
+    <item name="bottomNavigatimView" type="id" />
+    <item name="flFragment" type="id" />
 </resources>

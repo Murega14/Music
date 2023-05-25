@@ -25,6 +25,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
+        android:elevation="3dp"
         android:fitsSystemWindows="true"
         app:itemBackground="@color/black"
         app:itemIconTint="@drawable/tab_color"

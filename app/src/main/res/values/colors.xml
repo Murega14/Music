@@ -16,4 +16,13 @@
     <color name="button_background">#6200ee</color>
     <color name="button_text">#2196F3</color>
     <color name="toolbar">#E1F60C</color>
+
+    <color name="color_primary">#3F51B5</color>
+    <color name="color_primary_variant">#303F9F</color>
+    <color name="color_on_primary">#FFFFFF</color>
+    <color name="color_secondary">#FF4081</color>
+    <color name="color_secondary_variant">#F50057</color>
+    <color name="color_on_secondary">#000000</color>
+
+
 </resources>

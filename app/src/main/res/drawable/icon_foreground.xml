@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="102"
-    android:viewportHeight="143.42406">
+    android:viewportHeight="143.42406"
+    tools:targetApi="lollipop">
   <group android:scaleX="0.32714176"
       android:scaleY="0.46"
       android:translateX="34.31577"

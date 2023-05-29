@@ -156,7 +156,7 @@
         android:backgroundTint="@color/light_red"
         app:fabSize="normal"
         app:srcCompat="@drawable/minus"
-        app:tint="@color/textColor" />
+        app:tint="@color/textcolor" />
 
     <TextView
         android:id="@+id/add_expense_text"
@@ -181,7 +181,7 @@
         android:backgroundTint="@color/light_green"
         app:fabSize="normal"
         app:srcCompat="@drawable/add"
-        app:tint="@color/textColor" />
+        app:tint="@color/textcolor" />
 
     <TextView
         android:id="@+id/add_income_text"

@@ -1,4 +1,4 @@
-package com.example.fnext.model;
+package com.example.finext.model;
 
 public class expenseModel {
     String id, amount, type, note, date;

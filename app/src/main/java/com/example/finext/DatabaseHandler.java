@@ -1,6 +1,7 @@
 package com.example.finext;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.finext.model.incomeModel;
 import com.google.firebase.database.ChildEventListener;
@@ -38,7 +39,22 @@ public class DatabaseHandler {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, String previousChildKey) {
                 incomeModel income = dataSnapshot.getValue(incomeModel.class);
-                callback.onCallback(income);
+                callback.onCallback((List<incomeModel>) income);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
             }
 
             // Implement the remaining ChildEventListener methods if needed

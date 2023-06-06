@@ -1,7 +1,5 @@
 package com.example.finext;
 
-import android.content.Context;
-
 import androidx.annotation.NonNull;
 
 import com.example.finext.model.incomeModel;
@@ -11,7 +9,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHandler {

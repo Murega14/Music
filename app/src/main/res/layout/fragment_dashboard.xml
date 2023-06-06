@@ -128,7 +128,7 @@
         android:layout_below="@id/tvExp"
         android:layout_marginTop="8dp"
         android:scrollbars="horizontal"
-        tools:listitem="@layout/layout_expense_item" />
+        tools:listitem="@layout/item_expense" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_fab"

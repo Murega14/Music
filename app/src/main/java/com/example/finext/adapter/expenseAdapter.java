@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finext.R;
-import com.example.finext.model.ExpenseModel;
+import com.example.finext.model.expenseModel;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,11 +19,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHolder> {
+public class expenseAdapter extends RecyclerView.Adapter<expenseAdapter.ViewHolder> {
     private Context context;
-    private List<ExpenseModel> expenseModelList;
+    private List<expenseModel> expenseModelList;
 
-    public ExpenseAdapter(Context context, List<ExpenseModel> expenseModelList) {
+    public expenseAdapter(Context context, List<expenseModel> expenseModelList) {
         this.context = context;
         this.expenseModelList = expenseModelList;
     }
@@ -37,7 +37,7 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ExpenseModel expenseModel = expenseModelList.get(position);
+        expenseModel expenseModel = expenseModelList.get(position);
 
         holder.tvExpenseAmount.setText(String.format(Locale.getDefault(), "₹ %.2f", expenseModel.getAmount()));
         holder.tvExpenseJob.setText(expenseModel.getJob());
@@ -53,7 +53,7 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ViewHold
         return expenseModelList.size();
     }
 
-    public void setExpenseList(List<ExpenseModel> expenseList) {
+    public void setExpenseList(List<expenseModel> expenseList) {
         expenseModelList = expenseList;
         notifyDataSetChanged();
     }

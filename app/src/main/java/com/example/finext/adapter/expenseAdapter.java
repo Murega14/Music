@@ -23,7 +23,7 @@ public class expenseAdapter extends RecyclerView.Adapter<expenseAdapter.ViewHold
     private Context context;
     private List<expenseModel> expenseModelList;
 
-    public expenseAdapter(Context context, List<expenseModel> expenseModelList) {
+    public xpenseAdapter(Context context, List<expenseModel> expenseModelList) {
         this.context = context;
         this.expenseModelList = expenseModelList;
     }

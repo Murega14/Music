@@ -1,64 +1,59 @@
-package com.example.finext;
+`
+        setContent {
+    ExpenseDashboard(
+        @Composable
+fun ExpenseDashboard() {
+    val totalExpense = remember { mutableStateOf(500f) }
 
+    Column(modifier = Modifier.padding(16.dp)) {
+        Text(text = "Total Expense: $${totalExpense.value}")
+        Button(
+            onClick = {
+                // Code to navigate to Add Expense screen
+            },
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
+            Text(text = "Add Expense")
+        }
+        Button(
+            onClick = {
+                // Code to navigate to Create Budget screen
+            },
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
+            Text(text = "Create Budget")
+        }
+    }
+}
+)
+}
 
-import android.os.Bundle;
-import android.view.MenuItem;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import com.example.finext.fragments.Dashboard;
-import com.example.finext.fragments.Expense;
-import com.example.finext.fragments.Income;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-
-    BottomNavigationView bottomNavigationView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView?.setOnNavigationItemSelectedListener(this)
 
         // Set the default fragment
-        loadFragment(new Dashboard());
+        loadFragment(Dashboard())
     }
 
-    private void loadFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.flFragment, fragment);
-        fragmentTransaction.commit();
+    private fun loadFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.flFragment, fragment)
+        fragmentTransaction.commit()
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment selectedFragment = null;
-
-        switch (item.getItemId()) {
-            case R.id.dashboard:
-                selectedFragment = new Dashboard();
-                break;
-            case R.id.expense:
-                selectedFragment = new Expense();
-                break;
-            case R.id.income:
-                selectedFragment = new Income();
-                break;
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        val selectedFragment: Fragment? = when (item.itemId) {
+            R.id.dashboard -> Dashboard()
+            R.id.expense -> Expense()
+            R.id.income -> Income()
+            else -> null
         }
 
-        if (selectedFragment != null) {
-            loadFragment(selectedFragment);
-            return true;
+        selectedFragment?.let {
+            loadFragment(it)
+            return true
         }
-
-        return false;
+        return false
     }
 }

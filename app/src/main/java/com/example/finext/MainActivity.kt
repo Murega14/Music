@@ -1,21 +1,35 @@
-package com.example.finext
+`
+        setContent {
+    ExpenseDashboard(
+        @Composable
+fun ExpenseDashboard() {
+    val totalExpense = remember { mutableStateOf(500f) }
 
-import android.os.Bundle
-import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.example.finext.fragments.Dashboard
-import com.example.finext.fragments.Expense
-import com.example.finext.fragments.Income
-import com.google.android.material.bottomnavigation.BottomNavigationView
+    Column(modifier = Modifier.padding(16.dp)) {
+        Text(text = "Total Expense: $${totalExpense.value}")
+        Button(
+            onClick = {
+                // Code to navigate to Add Expense screen
+            },
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
+            Text(text = "Add Expense")
+        }
+        Button(
+            onClick = {
+                // Code to navigate to Create Budget screen
+            },
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
+            Text(text = "Create Budget")
+        }
+    }
+}
+)
+}
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
-    var bottomNavigationView: BottomNavigationView? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        bottomNavigationView.setOnNavigationItemSelectedListener(this)
+        bottomNavigationView?.setOnNavigationItemSelectedListener(this)
 
         // Set the default fragment
         loadFragment(Dashboard())
@@ -29,14 +43,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        var selectedFragment: Fragment? = null
-        when (item.itemId) {
-            R.id.dashboard -> selectedFragment = Dashboard()
-            R.id.expense -> selectedFragment = Expense()
-            R.id.income -> selectedFragment = Income()
+        val selectedFragment: Fragment? = when (item.itemId) {
+            R.id.dashboard -> Dashboard()
+            R.id.expense -> Expense()
+            R.id.income -> Income()
+            else -> null
         }
-        if (selectedFragment != null) {
-            loadFragment(selectedFragment)
+
+        selectedFragment?.let {
+            loadFragment(it)
             return true
         }
         return false

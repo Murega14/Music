@@ -14,13 +14,11 @@ import androidx.compose.ui.unit.dp
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.fragment.app.Fragment
-import com.example.finext.fragments.Dashboard
-import com.example.finext.fragments.Expense
-import com.example.finext.fragments.Income
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
-    private var bottomNavigationView: BottomNavigationView? = null
+
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,19 +28,17 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        bottomNavigationView?.setOnNavigationItemSelectedListener(this)
+        bottomNavigationView.setOnNavigationItemSelectedListener(this)
 
         // Set the default fragment
         loadFragment(Dashboard())
     }
 
     private fun loadFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.flFragment, fragment)
-        fragmentTransaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.flFragment, fragment)
+            .commit()
     }
-
 
     @Composable
     fun ExpenseDashboard() {
@@ -70,17 +66,14 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val selectedFragment: Fragment? = when (item.itemId) {
+        val selectedFragment: Fragment = when (item.itemId) {
             R.id.dashboard -> Dashboard()
             R.id.expense -> Expense()
             R.id.income -> Income()
-            else -> null
+            else -> Dashboard() // Default fragment
         }
 
-        selectedFragment?.let {
-            loadFragment(it)
-            return true
-        }
-        return false
+        loadFragment(selectedFragment)
+        return true
     }
 }

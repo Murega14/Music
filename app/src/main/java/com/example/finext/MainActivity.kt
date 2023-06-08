@@ -14,6 +14,9 @@ import androidx.compose.ui.unit.dp
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.fragment.app.Fragment
+import com.example.finext.fragments.Income
+import com.example.finext.fragments.Expense
+import com.example.finext.fragments.Dashboard
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -31,7 +34,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
 
         // Set the default fragment
-        loadFragment(Dashboard())
+        loadFragment(com.example.finext.fragments.Dashboard())
     }
 
     private fun loadFragment(fragment: Fragment) {

@@ -14,9 +14,10 @@ import androidx.compose.ui.unit.dp
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.fragment.app.Fragment
-import com.example.finext.fragments.Income
-import com.example.finext.fragments.Expense
-import com.example.finext.fragments.Dashboard
+import androidx.navigation.fragment.findNavController
+import com.example.finext.fragments.IncomeFragment
+import com.example.finext.fragments.ExpenseFragment
+import com.example.finext.fragments.DashboardFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {

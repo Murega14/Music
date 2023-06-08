@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
 
         // Set the default fragment
-        loadFragment(com.example.finext.fragments.Dashboard())
+        loadFragment(DashboardFragment())
     }
 
     private fun loadFragment(fragment: Fragment) {
@@ -70,10 +70,10 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val selectedFragment: Fragment = when (item.itemId) {
-            R.id.dashboard -> Dashboard()
-            R.id.expense -> Expense()
-            R.id.income -> Income()
-            else -> Dashboard() // Default fragment
+            R.id.dashboard -> DashboardFragment()
+            R.id.expense -> ExpenseFragment()
+            R.id.income -> IncomeFragment()
+            else -> DashboardFragment() // Default fragment
         }
 
         loadFragment(selectedFragment)

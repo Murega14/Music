@@ -12,13 +12,18 @@
         android:theme="@style/Theme.Finext"
         tools:targetApi="31">
         <activity
-            android:name="com.example.finext.RegisterActivity"
+            android:name=".UsernameActivity"
+            android:exported="false"
+            android:label="@string/title_activity_username"
+            android:theme="@style/Theme.Finext" />
+        <activity
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.finext.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.finext.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.finext.MainActivity"
+            android:name=".MainActivity"
             android:exported="false" />
     </application>
 

@@ -13,7 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 
 public class DatabaseHandler {
-    private DatabaseReference databaseReference;
+    private final DatabaseReference databaseReference;
 
     public DatabaseHandler() {
         // Get a reference to the root node of the Firebase Realtime Database

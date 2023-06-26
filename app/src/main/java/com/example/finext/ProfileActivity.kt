@@ -1,4 +1,5 @@
-package com.example.finext;
+package com.example.finext
+
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
@@ -13,9 +14,13 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
@@ -27,7 +32,7 @@ import androidx.core.content.FileProvider
 import java.io.File
 import java.io.IOException
 
-class ProfileActivity : AppCompatActivity() {
+class nProfileActivity : AppCompatActivity() {
 
     private val PICK_IMAGE_REQUEST = 1
     private lateinit var currentPhotoPath: String
@@ -96,19 +101,19 @@ class ProfileActivity : AppCompatActivity() {
                     )
                 )
             } else {
-                val imageBitmap = data.extras?.get("data") as Bitmap
-                imageBitmap
+                data.extras?.get("data") as Bitmap
             }
-            // Do something with the bitmap, like setting it in an ImageView
-            // imageView.setImageBitmap(bitmap)
+            // Update the profilePicture state variable with the selected bitmap
+            val profilePicture = bitmap
         }
     }
+
 
     @Preview(showBackground = true)
     @Composable
     fun ProfileScreen() {
-        var username by mutableStateOf("")
-        var profilePicture by mutableStateOf<Bitmap?>(null)
+        var username by remember { mutableStateOf("") }
+        val profilePicture by remember { mutableStateOf<Bitmap?>(null) }
         val context = LocalContext.current
 
         Surface(color = MaterialTheme.colors.background) {
@@ -117,13 +122,15 @@ class ProfileActivity : AppCompatActivity() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Image(
-                    bitmap = profilePicture?.asImageBitmap(),
-                    contentDescription = "Profile Picture",
-                    modifier = Modifier
-                        .size(120.dp)
-                        .padding(bottom = 16.dp)
-                )
+                profilePicture?.let {
+                    Image(
+                        bitmap = it.asImageBitmap(),
+                        contentDescription = "Profile Picture",
+                        modifier = Modifier
+                            .size(120.dp)
+                            .padding(bottom = 16.dp)
+                    )
+                }
                 Button(
                     onClick = {
                         pickImageFromGallery()

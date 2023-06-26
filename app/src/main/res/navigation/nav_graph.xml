@@ -3,26 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/expenseFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.finext.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/budgetFragment"
+        android:name="com.example.finext.fragments.BudgetFragment"
+        android:label="Budget Fragment"
+        tools:layout="@layout/fragment_budget">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_budgetFragment_to_expenseFragment"
+            app:destination="@id/expenseFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.finext.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/expenseFragment"
+        android:name="com.example.finext.fragments.ExpenseFragment"
+        android:label="Expense Fragment"
+        tools:layout="@layout/fragment_expense">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_expenseFragment_to_budgetFragment"
+            app:destination="@id/budgetFragment" />
+        <action
+            android:id="@+id/action_expenseFragment_to_billPaymentFragment"
+            app:destination="@id/billPaymentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/billPaymentFragment"
+        android:name="com.example.finext.fragments.BillpaymentFragment"
+        android:label="Bill Payment Fragment"
+        tools:layout="@layout/fragment_billpayment">
+
+        <action
+            android:id="@+id/action_billPaymentFragment_to_expenseFragment"
+            app:destination="@id/expenseFragment" />
     </fragment>
 </navigation>

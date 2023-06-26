@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/login_container"
         android:layout_width="375dp"
         android:layout_height="447dp"
         android:layout_alignParentTop="true"

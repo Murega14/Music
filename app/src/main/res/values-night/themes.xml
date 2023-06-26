@@ -15,15 +15,6 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme">color</style>
     <!-- Base application theme. -->
-    <style name="Base.Theme.Finext" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-    </style>
 
-    <style name="ThemeOverlay.Finext.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
-        <item name="fullscreenTextColor">@color/light_blue_A400</item>
-    </style>
 </resources>

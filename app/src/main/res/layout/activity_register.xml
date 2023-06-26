@@ -4,7 +4,6 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/register_container"
         android:layout_width="379dp"
         android:layout_height="487dp"
         android:layout_alignParentTop="true"
@@ -17,7 +16,8 @@
             android:layout_width="205dp"
             android:layout_height="197dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/logo_transparent" />
+            android:src="@drawable/logo_transparent"
+            android:contentDescription="TODO" />
 
         <EditText
             android:id="@+id/register_email"
@@ -25,13 +25,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/edit_text_background"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
             android:padding="12dp"
             android:textColor="@color/primary_text"
             android:textColorHint="@color/secondary_text"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/register_password"
@@ -39,13 +40,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/edit_text_background"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:minHeight="48dp"
             android:padding="12dp"
             android:textColor="@color/primary_text"
             android:textColorHint="@color/secondary_text"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/register_button"
@@ -53,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:background="@drawable/button_background"
-            android:text="Register"
+            android:text="@string/register"
             android:textColor="@color/button_text"
             android:textSize="16sp" />
 
@@ -61,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:id="@+id/sign_button"
-            android:text="Sign in?"
+            android:text="@string/sign_in"
             android:visibility="visible"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"

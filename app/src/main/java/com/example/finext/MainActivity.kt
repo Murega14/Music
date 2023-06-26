@@ -1,26 +1,19 @@
 package com.example.finext
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import com.example.finext.fragments.BudgetFragment
-import com.example.finext.fragments.ExpenseFragment
-import com.example.finext.fragments.DashboardFragment
-import com.example.finext.fragments.BillpaymentFragment
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,6 +64,11 @@ class MainActivity : AppCompatActivity() {
                 Text(text = "Monthly Insights")
             }
         }
+    }
+
+    private fun findNavController(): NavController {
+        return findNavController()
+
     }
 
     override fun onBackPressed() {

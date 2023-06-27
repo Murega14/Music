@@ -1,19 +1,14 @@
 package com.example.finext;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
-
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.List;
 
 public class DatabaseHandler {
     private final DatabaseReference databaseReference;
+
+    public DatabaseHandler(DatabaseReference databaseReference) {
+        this.databaseReference = databaseReference;
+    }
 
 // --Commented out by Inspection START (6/26/23, 8:24 PM):
 //    public DatabaseHandler() {

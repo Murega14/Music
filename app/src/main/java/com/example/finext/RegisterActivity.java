@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign up success, update UI with the signed-up user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                            startActivity(new Intent(RegisterActivity.this, nProfileActivity.class));
                             finish();
                         } else {
                             // If sign up fails, display a message to the user.

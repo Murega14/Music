@@ -96,14 +96,15 @@ class BillpaymentFragment : Fragment() {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setAutoCancel(true)
 
-        val notificationManager = NotificationManagerCompat.from(context)
+        val notificationManager = NotificationManagerCompat.from(requireContext())
         if (ActivityCompat.checkSelfPermission(
-                this,
+                requireContext(),
                 Manifest.permission.POST_NOTIFICATIONS
             ) != PackageManager.PERMISSION_GRANTED
-        ) {
+        )  {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
+
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)

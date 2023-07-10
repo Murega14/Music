@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'com.example.finext'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.finext"
-        minSdk 29
-        targetSdk 33
+        minSdk 30
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -39,7 +39,7 @@ android {
         jvmTarget = '1.8'
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.3.2'
+        kotlinCompilerExtensionVersion '1.4.8'
     }
     packagingOptions {
         resources {
@@ -58,7 +58,7 @@ android {
     ext {
         fragment_version = "1.6.0"
         compose_version = "1.4.3"
-        ext.kotlin_version = '1.8.1'
+        ext.kotlin_version = '1.8.22'
 
     }
 dependencies {
@@ -83,7 +83,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.21'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21'
     implementation 'com.google.firebase:firebase-database:20.2.2'
     implementation "androidx.activity:activity-compose:1.7.2"

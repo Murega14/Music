@@ -92,8 +92,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 Button(
                     onClick = {
-                        // Code to navigate to Monthly Insights screen
-                    },
+                        findNavController().navigate("MonthlyinsightsFragment")
+                              },
                     shape = RoundedCornerShape(20.dp),
                     modifier = Modifier.padding(top = 16.dp)
                 ) {

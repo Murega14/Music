@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -18,7 +19,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.firebase.database.DatabaseReference
@@ -59,11 +64,9 @@ class ExpenseFragment : Fragment() {
                 modifier = Modifier.padding(16.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text("Add Expense", style = MaterialTheme.typography.h5)
+            ) { 
                 Spacer(modifier = Modifier.height(16.dp))
                 ExpenseInputField("Amount", amount)
-                ExpenseInputField("Category", category)
                 ExpenseInputField("Label", label)
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
@@ -88,10 +91,20 @@ class ExpenseFragment : Fragment() {
                                     ).show()
                                 }
                         }
-                    },
+                    },shape = RoundedCornerShape(20.dp),
+
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Add Expense")
+                    Text("Add Expense",
+                        style = TextStyle(
+                            shadow = Shadow(
+                                color = Color.Black,
+                                offset = Offset(5f, 5f),
+                                blurRadius = 5f
+                            )
+                        )
+                    )
+
                 }
             }
         }

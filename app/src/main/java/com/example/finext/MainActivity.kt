@@ -1,10 +1,12 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.finext
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -35,32 +37,35 @@ class MainActivity : AppCompatActivity() {
     fun ExpenseDashboard() {
         val totalExpense = remember { mutableStateOf(500f) }
 
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)) {
             Text(text = "Total Expense: $${totalExpense.value}")
-            Row {
+
                 Button(
                     onClick = {
-                        findNavController().navigate("expenseFragment")
+                        findNavController().navigate(R.id.expenseFragment)
                     },
-                    shape = RoundedCornerShape(16.dp),
-                    modifier = Modifier.padding(top = 16.dp)
+                    shape = RoundedCornerShape(28.dp),
+                    modifier = Modifier.padding(top = 28.dp)
                 ) {
-                    Text(text = "Add Expense",
+                    Text(
+                        text = "Add Expense",
                         style = TextStyle(
                             shadow = Shadow(
                                 color = Color.Black,
                                 offset = Offset(5f, 5f),
                                 blurRadius = 5f
                             )
-                        ))
+                        )
+                    )
                 }
-            Row {
                 Button(
                     onClick = {
-                        findNavController().navigate("budgetFragment")
+                        findNavController().navigate(R.id.budgetFragment)
                     },
-                    shape = RoundedCornerShape(20.dp),
-                    modifier = Modifier.padding(top = 16.dp)
+                    shape = RoundedCornerShape(30.dp),
+                    modifier = Modifier.padding(top = 26.dp)
                 ) {
                     Text(text = "Create Budget",
                         style = TextStyle(
@@ -71,15 +76,12 @@ class MainActivity : AppCompatActivity() {
                             )
                         ))
                 }
-            }
-            }
-            Row {
                 Button(
                     onClick = {
-                        findNavController().navigate("billPaymentFragment")
+                        findNavController().navigate(R.id.billpaymentFragment)
                     },
-                    shape = RoundedCornerShape(20.dp),
-                    modifier = Modifier.padding(top = 16.dp)
+                    shape = RoundedCornerShape(30.dp),
+                    modifier = Modifier.padding(top = 26.dp)
                 ) {
                     Text(text = "Bill Payment",
                         style = TextStyle(
@@ -94,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                     onClick = {
                         findNavController().navigate("MonthlyinsightsFragment")
                               },
-                    shape = RoundedCornerShape(20.dp),
+                    shape = RoundedCornerShape(30.dp),
                     modifier = Modifier.padding(top = 16.dp)
                 ) {
                     Text(text = "Monthly Insights",
@@ -106,7 +108,7 @@ class MainActivity : AppCompatActivity() {
                             )
                         ))
                 }
-            }
+
 
         }
     }

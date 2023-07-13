@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logo_transparent">
+    android:background="@drawable/headerbkg">
 
     <ImageView
         android:layout_width="70dp"
@@ -14,7 +14,7 @@
 
 
     <LinearLayout
-        android:id="@+id/layoutVideo"
+        android:id="@+id/expense"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,14 +30,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add Expense"
-            android:textColor="@color/lavender"
+            android:textColor="@color/gold"
             android:layout_marginStart="30dp"
             android:textSize="16sp"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutShorts"
+        android:id="@+id/budgets"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,14 +53,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create a Budget"
-            android:textColor="@color/lavender"
+            android:textColor="@color/gold"
             android:layout_marginStart="30dp"
             android:textSize="16sp"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutLive"
+        android:id="@+id/bills"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add a bill"
-            android:textColor="@color/lavender"
+            android:textColor="@color/gold"
             android:layout_marginStart="30dp"
             android:textSize="16sp"/>
 

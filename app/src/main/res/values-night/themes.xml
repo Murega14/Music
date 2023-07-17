@@ -10,9 +10,14 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant
         </item>
         <!-- Customize your theme here. -->
+    </style>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Finext" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
 
     <!-- Base application theme. -->

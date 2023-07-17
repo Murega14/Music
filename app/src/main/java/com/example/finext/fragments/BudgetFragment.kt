@@ -4,74 +4,70 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import android.widget.*
 import androidx.fragment.app.Fragment
+import com.example.finext.R
+import com.example.finext.models.BudgetModel
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class BudgetFragment : Fragment() {
-    private lateinit var budgetRef: DatabaseReference
+class BudgetFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        budgetRef = FirebaseDatabase.getInstance().reference.child("budgets")
+    private lateinit var budgetValue: EditText
+    private lateinit var budgetbtnSaveData: Button
+
+    private lateinit var dbRef: DatabaseReference
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.activity_budget_fragment, container, false)
+
+        budgetValue = view.findViewById(R.id.budgetamount)
+        budgetbtnSaveData = view.findViewById(R.id.budgetbtnSave)
+
+        dbRef = FirebaseDatabase.getInstance().getReference("Expenses")
+
+        // Get the reference to the Spinner view
+        val budgetPeriodSpinner = view.findViewById<Spinner>(R.id.budgetPeriodSpinner)
+
+        // Define the options for the budget period dropdown menu
+        val budgetPeriodOptions = arrayOf("1 week", "2 weeks", "3 weeks", "1 month")
+
+        // Create the ArrayAdapter with the options and set it as the data source for the Spinner
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, budgetPeriodOptions)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        budgetPeriodSpinner.adapter = adapter
+
+        budgetbtnSaveData.setOnClickListener {
+            saveBudget()
+        }
+
+        return view
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return ComposeView(requireContext()).apply {
-            setContent {
-                BudgetDashboard()
-            }
-        }
-    }
+    private fun saveBudget() {
+        val budgetValueText = budgetValue.text.toString()
 
-    @Preview
-    @Composable                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-    fun BudgetDashboard() {
-        val budgetValue = remember { mutableStateOf("") }
-
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = "Enter Budget",
-                style = MaterialTheme.typography.h6,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-            TextField(
-                value = budgetValue.value,
-                onValueChange = { budgetValue.value = it },
-                label = { Text(text = "Budget") },
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-            Button(
-                onClick = {
-                    val budget = budgetValue.value.trim()
-                    if (budget.isNotBlank()) {
-                        budgetRef.setValue(budget)
-                        Toast.makeText(requireContext(), "Budget saved successfully", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(requireContext(), "Please enter a budget value", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            ) {
-                Text(text = "Submit")
-            }
+        if (budgetValueText.isEmpty()) {
+            budgetValue.error = "Please enter amount"
+            return
         }
+
+        // Get the selected budget period from the Spinner
+        val budgetPeriodSpinner = view?.findViewById<Spinner>(R.id.budgetPeriodSpinner)
+        val selectedBudgetPeriod = budgetPeriodSpinner?.selectedItem.toString()
+
+        val budgetId = dbRef.push().key!!
+
+        val budget = BudgetModel(budgetId, budgetValueText, selectedBudgetPeriod)
+
+        dbRef.child(budgetId).setValue(budget)
+            .addOnCompleteListener {
+                Toast.makeText(requireContext(), "Data inserted successfully", Toast.LENGTH_LONG).show()
+
+                budgetValue.text.clear()
+            }
+            .addOnFailureListener { err ->
+                Toast.makeText(requireContext(), "Error ${err.message}", Toast.LENGTH_LONG).show()
+            }
     }
 }

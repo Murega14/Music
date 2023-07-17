@@ -1,6 +1,7 @@
 package com.example.finext;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,7 +20,12 @@ import com.example.finext.databinding.ActivityMainBinding;
 import com.example.finext.fragments.BillpaymentFragment;
 import com.example.finext.fragments.BudgetFragment;
 import com.example.finext.fragments.ExpenseFragment;
-import com.example.finext.fragments.MonthlyinsightsFragment;
+import com.example.finext.views.ExpenseActivity;
+import com.example.finext.views.bills;
+import com.example.finext.views.budget;
+import com.example.finext.views.insights;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,16 +42,16 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.expense:
-                    replaceFragment(new ExpenseFragment());
+                    startActivity(new Intent(MainActivity.this, ExpenseActivity.class));
                     break;
                 case R.id.budgets:
-                    replaceFragment(new BudgetFragment());
+                    startActivity(new Intent(MainActivity.this, budget.class));
                     break;
                 case R.id.bills:
-                    replaceFragment(new BillpaymentFragment());
+                    startActivity(new Intent(MainActivity.this, bills.class));
                     break;
                 case R.id.insights:
-                    replaceFragment(new MonthlyinsightsFragment());
+                    startActivity(new Intent(MainActivity.this, insights.class));
                     break;
             }
             return true;
@@ -74,22 +80,25 @@ public class MainActivity extends AppCompatActivity {
         videoLayout.setOnClickListener(v -> {
             dialog.dismiss();
             Toast.makeText(MainActivity.this, "Add an expense", Toast.LENGTH_SHORT).show();
+            replaceFragment(new ExpenseFragment());
         });
 
         shortsLayout.setOnClickListener(v -> {
             dialog.dismiss();
             Toast.makeText(MainActivity.this, "Add a budget", Toast.LENGTH_SHORT).show();
+            replaceFragment(new BudgetFragment());
         });
 
         liveLayout.setOnClickListener(v -> {
             dialog.dismiss();
             Toast.makeText(MainActivity.this, "Add a bill", Toast.LENGTH_SHORT).show();
+            replaceFragment(new BillpaymentFragment());
         });
 
         //cancelButton.setOnClickListener(view -> dialog.dismiss());
 
         dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);

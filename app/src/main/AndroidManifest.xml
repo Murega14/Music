@@ -18,13 +18,13 @@
             android:name=".views.insights"
             android:exported="false" />
         <activity
-            android:name=".views.bills"
+            android:name=".views.BillsView"
             android:exported="false" />
         <activity
-            android:name=".views.budget"
+            android:name=".views.BudgetView"
             android:exported="false" />
         <activity
-            android:name=".views.ExpenseActivity"
+            android:name=".views.ExpenseView"
             android:exported="false"
             android:label="@string/title_activity_expense"
             android:theme="@style/Theme.Finext" />

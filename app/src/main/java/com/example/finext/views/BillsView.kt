@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.finext.R
 
-class budget : AppCompatActivity() {
+class BillsView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_budget)
+        setContentView(R.layout.activity_bills)
     }
 }

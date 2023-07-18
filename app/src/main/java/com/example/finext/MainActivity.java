@@ -20,9 +20,9 @@ import com.example.finext.databinding.ActivityMainBinding;
 import com.example.finext.fragments.BillpaymentFragment;
 import com.example.finext.fragments.BudgetFragment;
 import com.example.finext.fragments.ExpenseFragment;
-import com.example.finext.views.ExpenseActivity;
-import com.example.finext.views.bills;
-import com.example.finext.views.budget;
+import com.example.finext.views.ExpenseView;
+import com.example.finext.views.BillsView;
+import com.example.finext.views.BudgetView;
 import com.example.finext.views.insights;
 
 import java.util.Objects;
@@ -42,13 +42,13 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.expense:
-                    startActivity(new Intent(MainActivity.this, ExpenseActivity.class));
+                    startActivity(new Intent(MainActivity.this, ExpenseView.class));
                     break;
                 case R.id.budgets:
-                    startActivity(new Intent(MainActivity.this, budget.class));
+                    startActivity(new Intent(MainActivity.this, BudgetView.class));
                     break;
                 case R.id.bills:
-                    startActivity(new Intent(MainActivity.this, bills.class));
+                    startActivity(new Intent(MainActivity.this, BillsView.class));
                     break;
                 case R.id.insights:
                     startActivity(new Intent(MainActivity.this, insights.class));

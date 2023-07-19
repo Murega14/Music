@@ -70,7 +70,6 @@ class ExpenseView : AppCompatActivity() {
                     })
 
                     expRecyclerView.visibility = View.VISIBLE
-                    tvLoadingData.visibility = View.GONE
                 }
             }
 

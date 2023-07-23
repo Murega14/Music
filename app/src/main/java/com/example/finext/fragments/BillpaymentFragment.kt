@@ -1,117 +1,84 @@
 package com.example.finext.fragments
 
-import android.Manifest
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.ComposeView
-import androidx.core.app.ActivityCompat
 import com.example.finext.R
+import com.example.finext.models.BillModel
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class BillpaymentFragment : Fragment() {
-    private lateinit var database: DatabaseReference
-    private var billAmount by mutableStateOf("")
-    private var dueDate by mutableStateOf("")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        database = FirebaseDatabase.getInstance().reference
-    }
+    private lateinit var billname: EditText
+    private lateinit var billamount: EditText
+    private lateinit var duedate: EditText
+    private lateinit var billbtnsave: Button
+
+    private lateinit var database: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return ComposeView(requireContext()).apply {
-            setContent {
-                Column {
-                    Text("Bill Amount: $billAmount")
-                    Text("Due Date: $dueDate")
-                    Button(onClick = { saveBillData() }) {
-                        Text("Save Bill")
-                    }
-                }
-            }
+    ): View? {
+        val view = inflater.inflate(R.layout.activity_bill_payment_fragment, container, false)
+
+        billname = view.findViewById(R.id.billname)
+        billamount = view.findViewById(R.id.billamount)
+        duedate = view.findViewById(R.id.duedate)
+        billbtnsave = view.findViewById(R.id.billbtnsave)
+
+        database = FirebaseDatabase.getInstance().getReference("Bills")
+
+        billbtnsave.setOnClickListener {
+            saveBillData()
         }
+
+        return view
     }
 
     private fun saveBillData() {
-        val billId = database.child("bills").push().key
-        val billData = mapOf(
-            "amount" to billAmount,
-            "dueDate" to dueDate
-        )
+        val billnameValue = billname.text.toString()
+        val billamountValue = billamount.text.toString().toDoubleOrNull()
+        val duedateValue = duedate.text.toString()
 
-        if (billId != null) {
-            database.child("bills").child(billId).setValue(billData)
-                .addOnSuccessListener {
-                    // Data saved successfully
-                    setNotification(requireContext())
-                }
-                .addOnFailureListener {
-                    // Error occurred while saving data
-                }
-        }
-    }
-
-    private fun setNotification(context: Context) {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-        val dueDateObj = LocalDate.parse(dueDate, formatter)
-        val notificationDate = dueDateObj.minusDays(2)
-
-        val channelId = "bill_notification_channel"
-        val notificationId = 1
-
-        val channel = NotificationChannel(
-            channelId,
-            "Bill Notifications",
-            NotificationManager.IMPORTANCE_DEFAULT
-        )
-        val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        manager.createNotificationChannel(channel)
-
-        val notificationBuilder = NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle("Bill Reminder")
-            .setContentText("Your bill is due in 2 days.")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setAutoCancel(true)
-
-        val notificationManager = NotificationManagerCompat.from(requireContext())
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        )  {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+        if (billnameValue.isEmpty()) {
+            billname.error = "Please enter a name"
             return
         }
-        notificationManager.notify(notificationId, notificationBuilder.build())
+        if (billamountValue == null) {
+            billamount.error = "Please enter an amount"
+            return
+        }
+        if (duedateValue.isEmpty()) {
+            duedate.error = "Please enter a date"
+            return
+        }
+
+        val billId = database.push().key
+        billId?.let {
+            val bills = BillModel(it, billnameValue, billamountValue, duedateValue)
+
+            database.child(it).setValue(bills)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(requireContext(), "Data inserted successfully", Toast.LENGTH_LONG).show()
+                        billname.text.clear()
+                        billamount.text.clear()
+                        duedate.text.clear()
+                    } else {
+                        Toast.makeText(requireContext(), "Data insertion failed", Toast.LENGTH_LONG).show()
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(requireContext(), "Error: ${exception.message}", Toast.LENGTH_LONG).show()
+                }
+        }
     }
 }

@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/orchid"
     app:cardCornerRadius="8dp"
     android:layout_margin="8dp">
 
@@ -21,30 +22,30 @@
             android:layout_height="wrap_content"
             android:text="Bill name"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/black"
+            android:gravity="start"
+            android:textColor="@color/pink"
             android:textSize="30sp"
-            android:textStyle="bold"/>
+            android:textStyle="normal"/>
 
         <TextView
             android:id="@+id/tvBillAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bill amount"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
+            android:layout_gravity="start"
+            android:textColor="@color/gold"
             android:textSize="20dp"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvDueDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Due date"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
+            android:layout_gravity="start"
+            android:textColor="@color/olive"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="italic" />
 
     </LinearLayout>
 

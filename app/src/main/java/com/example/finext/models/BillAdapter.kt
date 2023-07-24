@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finext.R
-import java.text.FieldPosition
 
 class BillAdapter(private val billList: ArrayList<BillModel>) :
     RecyclerView.Adapter<BillAdapter.ViewHolder>() {
@@ -29,6 +28,9 @@ class BillAdapter(private val billList: ArrayList<BillModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentBill = billList[position]
         holder.tvBillName.text = currentBill.billname
+        holder.tvBillAmount.text = currentBill.billname
+        holder.tvDueDate.text = currentBill.duedate
+
     }
 
     override fun getItemCount(): Int {
@@ -37,6 +39,8 @@ class BillAdapter(private val billList: ArrayList<BillModel>) :
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvBillName: TextView = itemView.findViewById(R.id.tvBillName)
+        val tvBillAmount: TextView = itemView.findViewById(R.id.tvBillAmount)
+        val tvDueDate: TextView = itemView.findViewById(R.id.tvDueDate)
 
         init {
             itemView.setOnClickListener {

@@ -29,6 +29,7 @@ class ExpAdapter(private val expList: ArrayList<ExpenseModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentExp = expList[position]
         holder.tvExpName.text = currentExp.label
+        holder.tvExpAmount.text = currentExp.amount.toString()
     }
 
     override fun getItemCount(): Int {
@@ -37,6 +38,7 @@ class ExpAdapter(private val expList: ArrayList<ExpenseModel>) :
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvExpName: TextView = itemView.findViewById(R.id.tvExpName)
+        val tvExpAmount: TextView = itemView.findViewById(R.id.tvExpAmount)
 
         init {
             itemView.setOnClickListener {

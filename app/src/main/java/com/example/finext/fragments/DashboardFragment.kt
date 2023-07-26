@@ -45,7 +45,7 @@ class DashboardFragment : Fragment() {
         budgetRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    totalBudget = snapshot.child("amount").getValue(Double::class.java) ?: 0.0
+                    totalBudget = snapshot.child("amou").getValue(Double::class.java) ?: 0.0
                     updatePieChart()
                 }
             }

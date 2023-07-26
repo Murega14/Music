@@ -19,16 +19,13 @@
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_centerInParent="true" />
+        android:layout_height="300dp" />
 
     <!-- TextView for remaining budget -->
     <TextView
         android:id="@+id/tvRemainingBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pieChart"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:textSize="16sp"
         android:textColor="@color/black"

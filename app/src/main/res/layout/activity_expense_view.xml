@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.BudgetView">
+    tools:context=".views.ExpenseView"
+    android:backgroundTint="@color/cardview_dark_background">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvExp"

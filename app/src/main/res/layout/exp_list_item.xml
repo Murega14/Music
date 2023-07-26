@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:background="@color/cardview_dark_background"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -29,7 +30,7 @@
                 android:layout_gravity="center"
                 android:gravity="start"
                 android:text="@string/expense"
-                android:textColor="@color/black"
+                android:textColor="@color/coral"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -50,9 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:text="Amount"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:textStyle="italic" />
+            android:textColor="@color/pink"
+            android:textSize="30sp"
+            android:textStyle="normal" />
 
     </LinearLayout>
 

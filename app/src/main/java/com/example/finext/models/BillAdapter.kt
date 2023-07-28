@@ -28,7 +28,7 @@ class BillAdapter(private val billList: ArrayList<BillModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentBill = billList[position]
         holder.tvBillName.text = currentBill.billname
-        holder.tvBillAmount.text = currentBill.billname
+        holder.tvBillAmount.text = currentBill.billamount.toString()
         holder.tvDueDate.text = currentBill.duedate
 
     }

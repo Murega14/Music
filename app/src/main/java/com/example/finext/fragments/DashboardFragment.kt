@@ -40,20 +40,26 @@ class DashboardFragment : Fragment() {
         // Set up Firebase references
         budgetRef = FirebaseDatabase.getInstance().getReference("Budget")
         expenseRef = FirebaseDatabase.getInstance().getReference("Expenses")
+        totalBudget = 12000.0
 
         // Add listeners to fetch data from Firebase and update the UI
-        budgetRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    totalBudget = snapshot.child("amou").getValue(Double::class.java) ?: 0.0
-                    updatePieChart()
-                }
-            }
+        //budgetRef.addValueEventListener(object : ValueEventListener {
+            //override fun onDataChange(snapshot: DataSnapshot) {
+                //totalBudget = 0.0
+                //for (budgetSnapshot in snapshot.children){
+                    //val  budgetAmount = budgetSnapshot.child("budgetvalue").getValue(Double::class.java)
+                    //if (budgetAmount != null) {
+                      //  totalBudget += budgetAmount
+                   // }
+              //  }
 
-            override fun onCancelled(error: DatabaseError) {
+            //}
+
+            //override fun onCancelled(error: DatabaseError) {
                 // Handle database read error if needed
-            }
-        })
+              //  Log.e(TAG, "Database read error: ${error.message}")
+           // }
+        //})
 
         expenseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -84,10 +90,10 @@ class DashboardFragment : Fragment() {
 
         val entries: ArrayList<PieEntry> = ArrayList()
         entries.add(PieEntry(totalExpense.toFloat(), "Total Expense"))
-        entries.add(PieEntry((totalBudget - totalExpense).toFloat(), "Remaining Budget"))
+        entries.add(PieEntry((totalBudget).toFloat(), "Total Budget"))
 
         val dataSet = PieDataSet(entries, "")
-        setColors(dataSet, listOf(R.color.orange, R.color.olive), requireContext())
+        setColors(dataSet, listOf(R.color.yellow, R.color.blue), requireContext())
         dataSet.valueTextSize = 12f
 
         val pieData = PieData(dataSet)
